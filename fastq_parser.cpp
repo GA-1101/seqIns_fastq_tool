@@ -155,7 +155,7 @@ std::vector<InsertResult> findInsertSeq(
             // Does not contain both markers
             result.insertSeq = "Not_Match";
             result.insertPro = "Not_Match";
-            result.insertLen = -1;  // 用 -1 表示未匹配
+            result.insertLen = -1;  // Let -1 represent a no-match.
         }
         
         results.push_back(result);
@@ -189,14 +189,14 @@ void writeCSV(const std::unordered_map<std::string, int>& data,
         return;
     }
     
-    // 将 unordered_map 转为 vector 以便排序
+    // Convert the unordered_map to a vector for sorting.
     std::vector<std::pair<std::string, int>> sortedData(data.begin(), data.end());
     
-    // 按 Quantity 降序排序
+    // Sort by Quantity in descending order
     std::sort(sortedData.begin(), sortedData.end(),
               [](const std::pair<std::string, int>& a,
                  const std::pair<std::string, int>& b) {
-                  return a.second > b.second;  // 降序
+                  return a.second > b.second;  // Descending order
               });
     
     file << keyHeader << "," << valHeader << "\n";
